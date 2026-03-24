@@ -1,60 +1,109 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treino Semanal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Treino Mobile</title>
     <style>
         :root { --primary: #2ecc71; --bg: #121212; --card: #1e1e1e; --text: #ffffff; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
         
-        /* Barra de Navegação Superior Fixa */
+        * { box-sizing: border-box; } /* Garante que o padding não aumente o tamanho dos elementos */
+
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            margin: 0; 
+            padding: 0;
+            overflow-x: hidden; /* Evita rolagem lateral */
+        }
+        
+        /* Barra de Navegação Superior compacta */
         .navbar { 
             background: #1a1a1a; 
-            padding: 15px 10px; 
+            padding: 10px 5px; 
             position: sticky; 
             top: 0; 
             z-index: 1000; 
             border-bottom: 2px solid var(--primary); 
             display: flex; 
-            justify-content: space-around;
-            gap: 5px;
+            justify-content: space-between;
+            gap: 4px;
         }
         
         .nav-btn { 
             background: #333; 
             color: #bbb; 
             border: none; 
-            padding: 10px 12px; 
-            border-radius: 8px; 
-            font-size: 0.75rem; 
+            padding: 10px 2px; 
+            border-radius: 6px; 
+            font-size: 0.7rem; 
             font-weight: bold; 
-            cursor: pointer; 
-            flex: 1;
-            transition: 0.3s; 
+            flex: 1; /* Divide o espaço igualmente */
+            cursor: pointer;
         }
         
         .nav-btn.active { background: var(--primary); color: #000; }
 
-        .container { padding: 20px; }
-        h1 { text-align: center; color: var(--primary); font-size: 1.2rem; margin-bottom: 20px; }
+        .container { padding: 15px; width: 100%; }
         
-        /* Controle de Exibição dos Dias */
-        .dia-content { display: none; animation: fadeIn 0.4s ease; }
-        .dia-content.active { display: block; }
+        h1 { text-align: center; color: var(--primary); font-size: 1.1rem; margin: 10px 0; }
+        
+        .dia-content { display: none; width: 100%; }
+        .dia-content.active { display: block; animation: fadeIn 0.3s ease; }
 
-        .card { background: var(--card); border-radius: 15px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .img-container { width: 100%; height: 180px; border-radius: 10px; overflow: hidden; margin-bottom: 15px; background: #2a2a2a; }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
-        
-        h2 { margin: 0 0 15px 0; font-size: 1.1rem; color: var(--primary); border-bottom: 1px solid #333; padding-bottom: 10px; }
-        
-        ul { list-style: none; padding: 0; }
-        li { padding: 15px 0; border-bottom: 1px solid #2a2a2a; display: flex; align-items: center; }
-        input[type="checkbox"] { width: 22px; height: 22px; margin-right: 15px; accent-color: var(--primary); cursor: pointer; }
-        
-        .btn-reset { display: block; width: 100%; padding: 15px; background: #333; color: #ff7675; border: 1px solid #444; border-radius: 10px; font-weight: bold; margin-top: 30px; cursor: pointer; }
+        .card { 
+            background: var(--card); 
+            border-radius: 12px; 
+            padding: 15px; 
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .img-container { 
+            width: 100%; 
+            height: 140px; /* Reduzi a altura para sobrar espaço pro texto */
+            border-radius: 8px; 
+            overflow: hidden; 
+            margin-bottom: 15px; 
+            background: #2a2a2a; 
+        }
+        
+        .img-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        h2 { margin: 0 0 10px 0; font-size: 1rem; color: var(--primary); line-height: 1.2; }
+        
+        ul { list-style: none; padding: 0; margin: 0; }
+        
+        li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid #2a2a2a; 
+            display: flex; 
+            align-items: center;
+            font-size: 0.9rem; /* Tamanho de fonte melhor para mobile */
+        }
+
+        input[type="checkbox"] { 
+            min-width: 20px; 
+            min-height: 20px; 
+            margin-right: 12px; 
+            accent-color: var(--primary); 
+        }
+        
+        .btn-reset { 
+            display: block; 
+            width: 100%; 
+            padding: 12px; 
+            background: #222; 
+            color: #ff7675; 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+            font-size: 0.8rem;
+            font-weight: bold; 
+            margin-top: 20px; 
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -72,7 +121,7 @@
 
         <div id="segunda" class="dia-content active">
             <div class="card">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1574680096145-d05b474e2158?w=500"></div>
+                <div class="img-container"><img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Pernas"></div>
                 <h2>Segunda: Quadríceps e Glúteos</h2>
                 <ul>
                     <li><input type="checkbox"> Leg Press 45°</li>
@@ -85,10 +134,10 @@
 
         <div id="terca" class="dia-content">
             <div class="card">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1581009146145-b5ef03a7403f?w=500"></div>
+                <div class="img-container"><img src="https://images.pexels.com/photos/3838389/pexels-photo-3838389.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Peito"></div>
                 <h2>Terça: Peito e Tríceps</h2>
                 <ul>
-                    <li><input type="checkbox"> Supino c/ Halteres (Sentado)</li>
+                    <li><input type="checkbox"> Supino c/ Halteres</li>
                     <li><input type="checkbox"> Crucifixo Máquina</li>
                     <li><input type="checkbox"> Tríceps Corda</li>
                     <li><input type="checkbox"> Tríceps Francês Sentado</li>
@@ -98,12 +147,12 @@
 
         <div id="quarta" class="dia-content">
             <div class="card">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=500"></div>
-                <h2>Quarta: Core e Estabilidade</h2>
+                <div class="img-container"><img src="https://images.pexels.com/photos/3760830/pexels-photo-3760830.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Core"></div>
+                <h2>Quarta: Core</h2>
                 <ul>
-                    <li><input type="checkbox"> Prancha Frontal (3x 60s)</li>
+                    <li><input type="checkbox"> Prancha Frontal</li>
                     <li><input type="checkbox"> Prancha Lateral</li>
-                    <li><input type="checkbox"> Deadbug (Lombar no chão)</li>
+                    <li><input type="checkbox"> Deadbug</li>
                     <li><input type="checkbox"> Caminhada (30 min)</li>
                 </ul>
             </div>
@@ -111,8 +160,8 @@
 
         <div id="quinta" class="dia-content">
             <div class="card">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500"></div>
-                <h2>Quinta: Posterior e Panturrilha</h2>
+                <div class="img-container"><img src="https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Posterior"></div>
+                <h2>Quinta: Posterior</h2>
                 <ul>
                     <li><input type="checkbox"> Mesa Flexora</li>
                     <li><input type="checkbox"> Elevação Pélvica</li>
@@ -123,12 +172,12 @@
 
         <div id="sexta" class="dia-content">
             <div class="card">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=500"></div>
+                <div class="img-container"><img src="https://images.pexels.com/photos/949126/pexels-photo-949126.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Costas"></div>
                 <h2>Sexta: Costas e Bíceps</h2>
                 <ul>
                     <li><input type="checkbox"> Puxada Alta</li>
-                    <li><input type="checkbox"> Remada Baixa Sentada</li>
-                    <li><input type="checkbox"> Rosca 45° (Bíceps)</li>
+                    <li><input type="checkbox"> Remada Baixa</li>
+                    <li><input type="checkbox"> Rosca 45°</li>
                     <li><input type="checkbox"> Rosca Martelo</li>
                 </ul>
             </div>
@@ -138,22 +187,14 @@
     </div>
 
     <script>
-        // Função para trocar o dia exibido
         function mostrarDia(diaId, btn) {
-            // Esconde todos
             document.querySelectorAll('.dia-content').forEach(el => el.classList.remove('active'));
-            // Desativa botões
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            
-            // Ativa o dia e o botão clicado
             document.getElementById(diaId).classList.add('active');
             btn.classList.add('active');
-            
-            // Rola para o topo suavemente
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        // Função para limpar os checks
         function resetar() {
             if(confirm("Limpar os exercícios marcados?")) {
                 document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
