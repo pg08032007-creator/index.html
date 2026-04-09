@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --primary: #2ecc71;
+    --bg: #121212;
+    --card: #1e1e1e;
+    --text: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    gap: 4px;
+    padding: 10px 5px;
+    background: #1a1a1a;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid var(--primary);
+}
+
+.nav-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    background: #333;
+    color: #bbb;
+}
+
+.nav-btn.active {
+    background: var(--primary);
+    color: #000;
+}
+
+/* CONTAINER */
+.container { padding: 15px; }
+
+h1 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+/* CARD */
+.card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.dia-content { display: none; }
+.dia-content.active { display: block; }
+
+/* LISTA */
+ul { list-style: none; padding: 0; }
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.ex-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+input[type="checkbox"] {
+    min-width: 20px;
+    min-height: 20px;
+    accent-color: var(--primary);
+}
+
+/* BOTÃO */
+.btn-reset {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #222;
+    color: #ff7675;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+/* ANIMAÇÃO */
+input:checked {
+    transform: scale(1.2);
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<button class="nav-btn active" onclick="mostrarDia('segunda', this)">SEG</button>
+<button class="nav-btn" onclick="mostrarDia('terca', this)">TER</button>
+<button class="nav-btn" onclick="mostrarDia('quarta', this)">QUA</button>
+<button class="nav-btn" onclick="mostrarDia('quinta', this)">QUI</button>
+<button class="nav-btn" onclick="mostrarDia('sexta', this)">SEX</button>
+</div>
+
+<div class="container">
+<h1>🏋️ Treino do Dia</h1>
+
+<!-- SEGUNDA -->
+<div id="segunda" class="dia-content active">
+<div class="card">
+<h2>Quadríceps e Glúteos</h2>
+<ul>
+<li><img class="ex-img" src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&w=200"><input type="checkbox"> Leg Press</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/4164766/pexels-photo-4164766.jpeg?auto=compress&w=200"><input type="checkbox"> Extensora</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456303/pexels-photo-6456303.jpeg?auto=compress&w=200"><input type="checkbox"> Afundo</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/4498607/pexels-photo-4498607.jpeg?auto=compress&w=200"><input type="checkbox"> Abdutora</li>
+</ul>
+</div>
+</div>
+
+<!-- TERÇA -->
+<div id="terca" class="dia-content">
+<div class="card">
+<h2>Peito e Tríceps</h2>
+<ul>
+<li><img class="ex-img" src="https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=200"><input type="checkbox"> Supino</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6455827/pexels-photo-6455827.jpeg?auto=compress&w=200"><input type="checkbox"> Crucifixo</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456173/pexels-photo-6456173.jpeg?auto=compress&w=200"><input type="checkbox"> Tríceps Corda</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456214/pexels-photo-6456214.jpeg?auto=compress&w=200"><input type="checkbox"> Tríceps Francês</li>
+</ul>
+</div>
+</div>
+
+<!-- QUARTA -->
+<div id="quarta" class="dia-content">
+<div class="card">
+<h2>Core</h2>
+<ul>
+<li><img class="ex-img" src="https://images.pexels.com/photos/4324022/pexels-photo-4324022.jpeg?auto=compress&w=200"><input type="checkbox"> Prancha</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/4324025/pexels-photo-4324025.jpeg?auto=compress&w=200"><input type="checkbox"> Prancha Lateral</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456140/pexels-photo-6456140.jpeg?auto=compress&w=200"><input type="checkbox"> Deadbug</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&w=200"><input type="checkbox"> Caminhada</li>
+</ul>
+</div>
+</div>
+
+<!-- QUINTA -->
+<div id="quinta" class="dia-content">
+<div class="card">
+<h2>Posterior</h2>
+<ul>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456136/pexels-photo-6456136.jpeg?auto=compress&w=200"><input type="checkbox"> Flexora</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456307/pexels-photo-6456307.jpeg?auto=compress&w=200"><input type="checkbox"> Elevação Pélvica</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456226/pexels-photo-6456226.jpeg?auto=compress&w=200"><input type="checkbox"> Panturrilha</li>
+</ul>
+</div>
+</div>
+
+<!-- SEXTA -->
+<div id="sexta" class="dia-content">
+<div class="card">
+<h2>Costas e Bíceps</h2>
+<ul>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456177/pexels-photo-6456177.jpeg?auto=compress&w=200"><input type="checkbox"> Puxada</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456167/pexels-photo-6456167.jpeg?auto=compress&w=200"><input type="checkbox"> Remada</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456182/pexels-photo-6456182.jpeg?auto=compress&w=200"><input type="checkbox"> Rosca</li>
+<li><img class="ex-img" src="https://images.pexels.com/photos/6456193/pexels-photo-6456193.jpeg?auto=compress&w=200"><input type="checkbox"> Martelo</li>
+</ul>
+</div>
+</div>
+
+<button class="btn-reset" onclick="resetar()">DESMARCAR TUDO</button>
+</div>
+
+<script>
+function mostrarDia(diaId, btn) {
+    document.querySelectorAll('.dia-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(diaId).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function resetar() {
+    if(confirm("Limpar os exercícios marcados?")) {
+        document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+    }
+}
+</script>
+
+</body>
+  </html>
