@@ -83,8 +83,15 @@ li {
     height: 55px;
     border-radius: 8px;
     object-fit: cover;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
+.ex-img:hover {
+    transform: scale(1.1);
+}
+
+/* CHECKBOX */
 input[type="checkbox"] {
     min-width: 20px;
     min-height: 20px;
@@ -102,9 +109,29 @@ input[type="checkbox"] {
     border-radius: 8px;
 }
 
-/* ANIMAÇÃO */
-input:checked {
-    transform: scale(1.2);
+/* ZOOM MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding: 20px;
+    background: rgba(0,0,0,0.9);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.modal.show {
+    display: flex;
 }
 </style>
 </head>
@@ -127,10 +154,10 @@ input:checked {
 <div class="card">
 <h2>Quadríceps e Glúteos</h2>
 <ul>
-<li><img class="ex-img" src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&w=200"><input type="checkbox"> Leg Press</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/4164766/pexels-photo-4164766.jpeg?auto=compress&w=200"><input type="checkbox"> Extensora</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456303/pexels-photo-6456303.jpeg?auto=compress&w=200"><input type="checkbox"> Afundo</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/4498607/pexels-photo-4498607.jpeg?auto=compress&w=200"><input type="checkbox"> Abdutora</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/1552106/pexels-photo-1552106.jpeg?auto=compress&w=400"><input type="checkbox"> Leg Press</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/4164766/pexels-photo-4164766.jpeg?auto=compress&w=400"><input type="checkbox"> Extensora</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456303/pexels-photo-6456303.jpeg?auto=compress&w=400"><input type="checkbox"> Afundo</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/4498607/pexels-photo-4498607.jpeg?auto=compress&w=400"><input type="checkbox"> Abdutora</li>
 </ul>
 </div>
 </div>
@@ -140,10 +167,10 @@ input:checked {
 <div class="card">
 <h2>Peito e Tríceps</h2>
 <ul>
-<li><img class="ex-img" src="https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=200"><input type="checkbox"> Supino</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6455827/pexels-photo-6455827.jpeg?auto=compress&w=200"><input type="checkbox"> Crucifixo</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456173/pexels-photo-6456173.jpeg?auto=compress&w=200"><input type="checkbox"> Tríceps Corda</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456214/pexels-photo-6456214.jpeg?auto=compress&w=200"><input type="checkbox"> Tríceps Francês</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&w=400"><input type="checkbox"> Supino</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6455827/pexels-photo-6455827.jpeg?auto=compress&w=400"><input type="checkbox"> Crucifixo</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456173/pexels-photo-6456173.jpeg?auto=compress&w=400"><input type="checkbox"> Tríceps Corda</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456214/pexels-photo-6456214.jpeg?auto=compress&w=400"><input type="checkbox"> Tríceps Francês</li>
 </ul>
 </div>
 </div>
@@ -153,10 +180,10 @@ input:checked {
 <div class="card">
 <h2>Core</h2>
 <ul>
-<li><img class="ex-img" src="https://images.pexels.com/photos/4324022/pexels-photo-4324022.jpeg?auto=compress&w=200"><input type="checkbox"> Prancha</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/4324025/pexels-photo-4324025.jpeg?auto=compress&w=200"><input type="checkbox"> Prancha Lateral</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456140/pexels-photo-6456140.jpeg?auto=compress&w=200"><input type="checkbox"> Deadbug</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&w=200"><input type="checkbox"> Caminhada</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/4324022/pexels-photo-4324022.jpeg?auto=compress&w=400"><input type="checkbox"> Prancha</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/4324025/pexels-photo-4324025.jpeg?auto=compress&w=400"><input type="checkbox"> Prancha Lateral</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456140/pexels-photo-6456140.jpeg?auto=compress&w=400"><input type="checkbox"> Deadbug</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&w=400"><input type="checkbox"> Caminhada</li>
 </ul>
 </div>
 </div>
@@ -166,9 +193,9 @@ input:checked {
 <div class="card">
 <h2>Posterior</h2>
 <ul>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456136/pexels-photo-6456136.jpeg?auto=compress&w=200"><input type="checkbox"> Flexora</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456307/pexels-photo-6456307.jpeg?auto=compress&w=200"><input type="checkbox"> Elevação Pélvica</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456226/pexels-photo-6456226.jpeg?auto=compress&w=200"><input type="checkbox"> Panturrilha</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456136/pexels-photo-6456136.jpeg?auto=compress&w=400"><input type="checkbox"> Flexora</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456307/pexels-photo-6456307.jpeg?auto=compress&w=400"><input type="checkbox"> Elevação Pélvica</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456226/pexels-photo-6456226.jpeg?auto=compress&w=400"><input type="checkbox"> Panturrilha</li>
 </ul>
 </div>
 </div>
@@ -178,15 +205,20 @@ input:checked {
 <div class="card">
 <h2>Costas e Bíceps</h2>
 <ul>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456177/pexels-photo-6456177.jpeg?auto=compress&w=200"><input type="checkbox"> Puxada</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456167/pexels-photo-6456167.jpeg?auto=compress&w=200"><input type="checkbox"> Remada</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456182/pexels-photo-6456182.jpeg?auto=compress&w=200"><input type="checkbox"> Rosca</li>
-<li><img class="ex-img" src="https://images.pexels.com/photos/6456193/pexels-photo-6456193.jpeg?auto=compress&w=200"><input type="checkbox"> Martelo</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456177/pexels-photo-6456177.jpeg?auto=compress&w=400"><input type="checkbox"> Puxada</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456167/pexels-photo-6456167.jpeg?auto=compress&w=400"><input type="checkbox"> Remada</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456182/pexels-photo-6456182.jpeg?auto=compress&w=400"><input type="checkbox"> Rosca</li>
+<li><img class="ex-img" onclick="zoom(this)" src="https://images.pexels.com/photos/6456193/pexels-photo-6456193.jpeg?auto=compress&w=400"><input type="checkbox"> Martelo</li>
 </ul>
 </div>
 </div>
 
 <button class="btn-reset" onclick="resetar()">DESMARCAR TUDO</button>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="fecharZoom()">
+<img id="modalImg">
 </div>
 
 <script>
@@ -195,7 +227,6 @@ function mostrarDia(diaId, btn) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(diaId).classList.add('active');
     btn.classList.add('active');
-    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function resetar() {
@@ -203,7 +234,16 @@ function resetar() {
         document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
     }
 }
+
+function zoom(img) {
+    document.getElementById("modal").classList.add("show");
+    document.getElementById("modalImg").src = img.src;
+}
+
+function fecharZoom() {
+    document.getElementById("modal").classList.remove("show");
+}
 </script>
 
 </body>
-  </html>
+        </html>
